@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "9b0e946c-cc1e-42c3-87bc-b019ad722c36",
+		"name": "Microservice-UserManagment",
+		"description": "### 1\\. **Create User (with name and phones)**\n\n- **Método**: `POST`\n    \n- **URL**: `http://localhost:8080/sign-up`\n    \n- **Descripción**: Este endpoint permite la creación de un nuevo usuario con toda la información necesaria.\n    \n- **Body**:\n    \n    - `{ \"name\": \"John Doe\", \"email\": \"`[<code>johndoe@example.com</code>](https://mailto:johndoe@example.com)`\", \"password\": \"a2asfGfdfdf4\", \"phones\": [ { \"number\": 1234567890, \"citycode\": 1, \"countrycode\": \"+1\" }, { \"number\": 9876543210, \"citycode\": 2, \"countrycode\": \"+1\" } ] }`\n        \n- **Respuesta esperada de ejemplo:**\n    \n\n### 2\\. **Create User (without name and phones)**\n\n- **Método**: `POST`\n    \n- **URL**: `http://localhost:8080/sign-up`\n    \n- **Descripción**: Este endpoint permite la creación de un nuevo usuario con toda la información necesaria.\n    \n- **Body ( RequestBody)**:\n    \n    - `{ \"email\": \"`[<code>johndoe@example.com</code>](https://mailto:johndoe@example.com)`\", \"password\": \"a2asfGfdfdf4\", }`\n        \n- **Respuesta esperada de ejemplo:**\n    \n\n<img src=\"https://content.pstmn.io/2d6cf4ea-6d14-4bee-9cd7-0274be844eed/aW1hZ2UucG5n\" width=\"955\" height=\"320\">\n\n#### Códigos de error esperados en create-user (con o sin valores null):\n\n- **400 Bad Request**\n    \n    - **Descripción**: Los datos proporcionados son inválidos (Email o password en formato incorrecto).\n        \n    - `{ \"error\": [ { \"timestamp\": \"2024-09-30T12:34:09.861074\", \"codigo\": 400, \"detail\": \"Email already registered\" } ] }`\n        \n\n---\n\n### 3\\. **Login Endpoint**\n\n- **Método**: `GET`\n    \n- **URL**: `http://localhost:8080/login`\n    \n- **Descripción**: Este endpoint permite obtener la información del usuario logueado. Es una ruta protegida que requiere un JWT.\n    \n- **Autenticación**:\n    \n    - **Tipo**: Bearer Token\n        \n    - **Token**: JWT (enviado en el header `Authorization`)\n        \n- **Configuración de Header**:\n    \n\n<img src=\"https://content.pstmn.io/52a23d4a-83c0-4aaa-b686-d300f1fb790b/Q2FwdHVyYSBkZXNkZSAyMDI0LTA5LTMwIDEyLTQ5LTM2LnBuZw==\">\n\n- **Respuesta esperada de ejemplo:**\n    \n\n<img src=\"https://content.pstmn.io/ddf7aa32-fd5e-46c1-b064-119093629db1/aW1hZ2UucG5n\" width=\"944\" height=\"365\">\n\n#### Códigos de error esperados:\n\n- **401 Unauthorized**\n    \n    - **Descripción**: El token JWT no es válido o ha expirado.\n        \n    - `{ \"error\": [{ \"status\": 401, \"message\": \"Unauthorized\" } ] }`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25426275"
+	},
+	"item": [
+		{
+			"name": "create-user-with-null-values",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"email\": \"john.doe2@example.com\",\n    \"password\": \"a2asfGfdfdf4A\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/sign-up"
+			},
+			"response": []
+		},
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"a2asfGfdfdf4\",\n    \"phones\": [\n        {\n            \"number\": 1234567890,\n            \"citycode\": 1,\n            \"countrycode\": \"+1\"\n        },\n        {\n            \"number\": 9876543210,\n            \"citycode\": 2,\n            \"countrycode\": \"+1\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/sign-up"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOaiJqb2huLmRvZTNAZXhhbXBsZS5jb20iLCJpYXQiOjE3Mjc3MTA0NDksImV4cCI6MTcyNzcxMTg4OX0.P1q3Vv3jZVNYQf_iYmwiPZOv7VF_1oDgS1F1Gk1XNzw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/login"
+			},
+			"response": []
+		}
+	]
+}
