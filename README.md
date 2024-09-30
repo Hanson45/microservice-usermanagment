@@ -1,5 +1,4 @@
 
-
 # Microservicio - Gestión de Usuarios
 
 ## 1\. Requisitos Previos
@@ -18,7 +17,7 @@ Este proyecto utiliza una base de datos **PostgreSQL** que se ejecuta a través 
 
 1.  **Clona el repositorio del proyecto**:
     
-    `git clone https://github.com/usuario/proyecto.git cd UserManagementSystem`
+    `git clone https://github.com/Hanson45/microservice-usermanagment.git cd microservice-usermanagment-main`
 2.  **Inicia el contenedor de Docker**:
 
     Asegúrate de estar en la raíz del proyecto donde está ubicado el archivo `docker-compose.yml`, luego ejecuta el siguiente comando para levantar la base de datos en Docker:
